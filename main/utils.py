@@ -3,6 +3,7 @@ import json
 import requests
 from django.conf import settings
 from main.models import Enterprise, Comuna
+from robobrowser import RoboBrowser
 
 def downloadInfo():
     url = u'http://api.recursos.datos.gob.cl/datastreams/invoke/TURIS-' +\
@@ -36,3 +37,28 @@ def downloadInfo():
 
         if found_tags:
             e.save()
+
+# [Utils: Crawler]
+# @Return: List of Str or None
+def metaData(url):
+    # Variables:
+    crawler     = RoboBrowser(history=True)
+    endpoint    = "http://"+url 
+    endpointSSL = "https://"+url 
+    connFlag    = True
+    metadata    = list()
+
+    # Procedimientos:
+    try:
+        crawler.open(endpoint, verify=False)
+    except:
+        connFlag = False
+
+    if not connFlag:
+        try:
+            crawler.open(endpointSSL, verify=False)
+        except:
+            return None
+    
+    metadata.append(crawler.select("meta"))
+    return metadata
