@@ -64,8 +64,12 @@ def metaData(url):
     metadata.append(crawler.select("meta"))
     return metadata
 
-#[Utils: website sportList]
+
 def sportList(url, sportDataList):
+	"""
+		Return list of sports in the metadata of url.
+		This function uses metaData previously defined.
+	"""
     # Variables:
     metadata  = metaData(url)
     act_list  = list()
@@ -73,8 +77,9 @@ def sportList(url, sportDataList):
     # Procedimientos:
     for sport in sportDataList:
         for data in metadata:
-            if str(sport) in str(data):
-                act_list.append(sport)
+            if sport in str(data):
+				if sport not in act_list:
+					act_list.append(sport)
     return act_list
 
 def initialLoad():
