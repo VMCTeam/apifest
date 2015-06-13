@@ -2,7 +2,7 @@
 import json
 import requests
 from django.conf import settings
-from main.models import Enterprise, Comuna
+from main.models import Enterprise, Comuna, Tag
 from robobrowser import RoboBrowser
 
 def downloadInfo():
@@ -43,8 +43,8 @@ def downloadInfo():
 def metaData(url):
     # Variables:
     crawler     = RoboBrowser(history=True)
-    endpoint    = "http://"+url 
-    endpointSSL = "https://"+url 
+    endpoint    = "http://"+url
+    endpointSSL = "https://"+url
     connFlag    = True
     metadata    = list()
 
@@ -59,7 +59,7 @@ def metaData(url):
             crawler.open(endpointSSL, verify=False)
         except:
             return None
-    
+
     metadata.append(crawler.select("meta"))
     return metadata
 
@@ -75,3 +75,49 @@ def sportList(url, sportDataList):
             if str(sport) in str(data):
                 act_list.append(sport)
     return act_list
+
+def initialLoad():
+    data = [
+        u'Airsoft',
+        u'Apnea',
+        u'Barranquismo',
+        u'Beach Run',
+        u'BMX',
+        u'Bungee',
+        u'Bodyboard',
+        u'Carreras de Aventura',
+        u'Carving',
+        u'Cross Country',
+        u'Descenso de ríos o hydrospeed',
+        u'Escalada',
+        u'Esquí extremo',
+        u'Freeride',
+        u'Freestyle',
+        u'Paracaidismo',
+        u'Kitesurfing',
+        u'Longboard',
+        u'Motocross',
+        u'Paintball',
+        u'Paracaidismo',
+        u'Parapente',
+        u'Parkour',
+        u'Patinaje agresivo',
+        u'Puénting',
+        u'Salto base',
+        u'Salto con pértiga',
+        u'Surf',
+        u'Sandboard',
+        u'Scootering',
+        u'Skateboarding',
+        u'Skimming',
+        u'Slackline',
+        u'Snowboard',
+        u'Supercross',
+        u'Surf'
+    ]
+    for value in data:
+        tag = Tag()
+        tag.name = value
+        tag.display_name = value
+        tag.eng_name = value
+        tag.save()

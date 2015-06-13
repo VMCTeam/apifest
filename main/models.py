@@ -61,6 +61,15 @@ class Comuna(models.Model):
         except:
             return None
 
+
+class Tag(models.Model):
+    name = models.CharField(_('Name'), max_length=50, null=False, blank=False)
+    display_name = models.CharField(_('Name'), max_length=50, null=False,
+                                               blank=False)
+    eng_name = models.CharField(_('Name'), max_length=50, null=False,
+                                               blank=False)
+
+
 class Enterprise(models.Model):
     comuna = models.ForeignKey(Comuna, related_name="enterprises")
     origin = models.CharField(_('Name'), max_length=50, null=False,
@@ -78,3 +87,4 @@ class Enterprise(models.Model):
     services = models.CharField(_('Service'), max_length=400)
     available = models.BooleanField(_('Available'), default=True)
     phone = models.CharField(_('Phone'), max_length=20, blank=True, null=True)
+    tags = models.ManyToManyField(Tag, related_name="enterprise")
