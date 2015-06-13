@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
 import requests
+import unicodedata
 from django.conf import settings
 from main.models import Enterprise, Comuna, Tag
 from robobrowser import RoboBrowser
@@ -117,7 +118,12 @@ def initialLoad():
     ]
     for value in data:
         tag = Tag()
-        tag.name = value
+        tag.name = normalize(value)
         tag.display_name = value
         tag.eng_name = value
         tag.save()
+
+
+def normalize(value):
+    value = value.lower()
+    return ''.join(c for c in unicodedata.normalize('NFD', value) if unicodedata.category(c) != 'Mn')

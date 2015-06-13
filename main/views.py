@@ -13,7 +13,7 @@ class SearchView(FormView):
     """
     Vista para buscar por región, comuna, tipo de deporte.
     """
-    template_name = 'main.html'
+    template_name = 'index.html'
     title = _('MyProfile')
     form_class = SearchForm
 

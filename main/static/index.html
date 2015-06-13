@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!--[if lt IE 8 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 8)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>API Fest</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/css/default.css">
+    <link rel="stylesheet" href="/static/css/layout.css">
+    <link rel="stylesheet" href="/static/css/media-queries.css">
+    <link rel="stylesheet" href="/static/css/magnific-popup.css">
+    <script src="/static/js/modernizr.js"></script>
+    <link rel="shortcut icon" href="/static/favicon.png" >
+</head>
+
+<body>
+  <!-- Header
+  ================================================== -->
+  <header id="home">
+    <nav id="nav-wrap">
+      <a class="mobile-btn" href="#nav-wrap" title="Menú">Menú</a>
+      <a class="mobile-btn" href="#" title="Cerrar menú">Cerrar menú</a>
+      <ul id="nav" class="nav">
+        <li class="current"><a class="smoothscroll" href="#home">Inicio</a></li>
+        <li><a class="smoothscroll" href="#travel">Arma tu viaje</a></li>
+        <li><a class="smoothscroll" href="#how">Como funciona</a></li>
+        <li><a class="smoothscroll" href="#faq">FAQ</a></li>
+        <li><a class="smoothscroll" href="#policy">Políticas</a></li>
+        <li><a class="smoothscroll" href="#contact">Contacto</a></li>
+      </ul> <!-- end #nav -->
+    </nav> <!-- end #nav-wrap -->
+
+    <div class="row banner">
+      <div class="eight columns">
+        <div class="smartphone banner-text">
+          <h1 class="responsive-headline">Arma tu viaje extremo!</h1>
+
+        </div>
+      </div>
+
+      <div class="four columns">
+      </div>
+
+    </div>
+
+    <p class="scrolldown">
+      <a class="smoothscroll" href="#how"><i class="icon-down-circle"></i></a>
+    </p>
+  </header> <!-- Header End -->
+
+
+  <!-- Invite Section
+  ================================================== -->
+  <section id="travel">
+    <div class="row">
+      <div class="twelve columns main-col text-center">
+
+      </div> <!-- end .main-col -->
+    </div>
+  </section> <!-- Invite Section End-->
+
+  <!-- Como funciona Section
+  ================================================== -->
+  <section id="how">
+    <div class="row">
+      <div class="twelve columns main-col text-center">
+        <!--<h2>Cómo funciona</h2>-->
+        <p>
+        <!-- INSERTAR VIDEO -->
+        <!-- <iframe width="560" height="315" src="//www.youtube.com/embed/auUkJIetXVg" frameborder="0" allowfullscreen></iframe>
+        -->
+        <h2>¡Pronto! Un video para mostrarte lo genial que es.</h2>
+        </p>
+
+      </div> <!-- end .main-col -->
+    </div>
+  </section> <!-- Como funciona Section End-->
+
+
+  <!-- FAQ Section ================================================== -->
+  <section id="faq">
+    <!-- FAQ  ----------------------------------------------- -->
+    <div class="row education">
+      <div class="three columns header-col">
+        <h1><span>FAQ</span></h1>
+      </div>
+
+      <div class="nine columns main-col">
+        <div class="row item">
+          <div class="twelve columns">
+            <h4>¿Está disponible para Android?</h4>
+            <p>Aún no, pero estamos trabajando en ello.</p>
+          </div>
+        </div> <!-- item end -->
+
+
+        <div class="row item">
+          <div class="twelve columns">
+            <h4>¿El servicio tiene costo?</h4>
+            <p>No, ninguno.</p>
+          </div>
+        </div> <!-- item end -->
+
+        <div class="row item">
+          <div class="twelve columns">
+            <h4>¿De verdad? ¿Es gratis?</h4>
+            <p>Sí, de verdad. En serio, es gratis.</p>
+          </div>
+        </div> <!-- item end -->
+
+      </div> <!-- main-col end -->
+    </div> <!-- End FAQ -->
+  </section>
+ContactForm
+  <section id="policy">
+    <!-- Politicas ----------------------------------------------- -->
+    <div class="row education">
+      <div class="three columns header-col">
+        <h1><span>Políticas</span></h1>
+      </div>
+
+      <div class="nine columns main-col">
+        <div class="row item">
+          <div class="twelve columns">
+            <h4></h4>
+            <p>1.- No se permite fotos con contenido sexual de ningún tipo, fotos de carácter violento ni nada que atente contra la dignidad de terceros. Subir fotos de estas características implicará el cierre de la cuenta, previo aviso al dueño de ésta.</p>
+          </div>
+        </div> <!-- item end -->
+
+      </div> <!-- main-col end -->
+    </div> <!-- End Politicas -->
+  </section>
+
+
+  <!-- Contact Section ================================================== -->
+  <section id="contact">
+    <div class="row section-head">
+      <div class="two columns header-col">
+        <h1><span>¡Ponte en contacto con nosotros!</span></h1>
+      </div>
+      <div class="ten columns">
+        <p class="lead"> ¿Dudas? ¡Envíanos un mensaje!
+        </p><!-- contact-warning -->
+        <div id="message-warning"> Error</div>
+        <!-- contact-success -->
+        <div id="message-success">
+          <i class="fa fa-check"></i>Tu mensaje fue enviado. ¡Gracias!<br>
+        </div>
+      </div>
+    </div>
+    <div class="row">ContactForm
+      <div class="eight columns">
+      <!-- form -->
+        <form action="" method="post" id="contactForm" name="contactForm">
+          <fieldset>
+          {% csrf_token %}
+          <div>
+            <label for="id_name">Nombre <span class="required">*</span></label>
+	   <input type="text" value="" size="35" id="id_name" name="name">
+          </div>
+          <div>
+	   <label for="id_email">Email <span class="required">*</span></label>
+            <input type="text" value="" size="35" id="id_email" name="email">
+          </div>
+          <div>
+	   <label for="id_subject">Asunto </label>
+	   <input type="text" value="" size="35" id="id_subject" name="subject">
+          </div>
+          <div>
+            <label for="id_message">Mensaje <span class="required">*</span></label>
+            <textarea cols="50" rows="10" id="id_message" name="message"></textarea>
+          </div>
+          <div>
+            <button class="submit">Enviar</button>
+            <span id="image-loader">
+              <img alt="" src="/static/images/loader.gif">
+            </span>
+          </div>
+          </fieldset>
+        </form> <!-- Form End -->
+
+        <!-- contact-warning -->
+        <div id="message-warning"> Error</div>
+        <!-- contact-success -->
+        <div id="message-success">
+          <i class="fa fa-check"></i>Tu mensaje fue enviado. ¡Gracias!<br>
+        </div>
+      </div>
+      <aside class="four columns footer-widgets">
+        <div class="widget widget_contact">
+          <h4>Contacto</h4>
+          <p class="address">
+            beelook@beelook.com<br>
+            <!-- <span>+56 (2) 1234xxx</span><br> -->
+            <span>Santiago, Chile</span>
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section> <!-- Contact Section End-->
+
+
+   <!-- footer ================================================== -->
+  <footer>
+    <div class="row">
+      <div class="twelve columns">
+        <ul class="social-links">
+          <li><a href="https://www.facebook.com/beelookapp"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="https://twitter.com/beelookapp"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+        </ul>
+        <ul class="copyright">
+          <li>&copy; Copyright 2014 CeeVee</li>
+          <li>Diseño por <a title="Styleshout" href="http://www.styleshout.com/">Styleshout</a></li>
+        </ul>
+      </div>
+      <div id="go-top"><a class="smoothscroll" title="Back to Top" href="#home"><i class="icon-up-open"></i></a>
+      </div>
+    </div>
+  </footer> <!-- Footer End-->
+
+  <!-- Java Script ================================================== -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="/static/js/jquery-1.10.2.min.js"><\/script>')</script>
+  <script type="text/javascript" src="/static/js/jquery-migrate-1.2.1.min.js"></script>
+  <script src="/static/js/jquery.flexslider.js"></script>
+  <script src="/static/js/waypoints.js"></script>
+  <script src="/static/js/jquery.fittext.js"></script>
+  <script src="/static/js/magnific-popup.js"></script>
+  <script src="/static/js/init.js"></script>
+
+</body>
+</html>ContactForm
