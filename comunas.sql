@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `comunas`
 --
 
-CREATE TABLE IF NOT EXISTS `addresses_comuna` (
+CREATE TABLE IF NOT EXISTS `main_comuna` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria',
   `name` varchar(200) NOT NULL COMMENT 'Nombre comuna',
   `provincia_id` int(11) NOT NULL COMMENT 'ID provincia de comuna',
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `addresses_comuna` (
 -- Volcado de datos para la tabla `comunas`
 --
 
-INSERT INTO `addresses_comuna` (`id`, `name`, `provincia_id`, `created`, `updated`) VALUES
+INSERT INTO `main_comuna` (`id`, `name`, `provincia_id`, `created`, `updated`) VALUES
 (1, 'ARICA', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (2, 'CAMARONES', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (3, 'PUTRE', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -396,8 +396,8 @@ INSERT INTO `addresses_comuna` (`id`, `name`, `provincia_id`, `created`, `update
 --
 -- Filtros para la tabla `comunas`
 --
-ALTER TABLE `addresses_comuna`
-  ADD CONSTRAINT `provincia_id` FOREIGN KEY (`provincia_id`) REFERENCES `addresses_provincia` (`id`);
+ALTER TABLE `main_comuna`
+  ADD CONSTRAINT `provincia_id` FOREIGN KEY (`provincia_id`) REFERENCES `main_provincia` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

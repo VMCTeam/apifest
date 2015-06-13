@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `regions`
 --
 
-CREATE TABLE IF NOT EXISTS `addresses_region` (
+CREATE TABLE IF NOT EXISTS `main_region` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria',
   `name`    varchar(200) NOT NULL COMMENT 'Nombre',
   `number`  varchar(200) NOT NULL COMMENT 'Numero',
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `addresses_region` (
 -- Volcado de datos para la tabla `regions`
 --
 
-INSERT INTO `addresses_region` (`id`, `name`, `number`, `created`, `updated`) VALUES
+INSERT INTO `main_region` (`id`, `name`, `number`, `created`, `updated`) VALUES
 (1,  'REGIÓN DE TARAPACÁ', 'I','0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (2,  'REGIÓN DE ANTOFAGASTA', 'II','0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (3,  'REGIÓN DE ATACAMA', 'III', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),

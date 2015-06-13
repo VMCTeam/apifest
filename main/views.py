@@ -17,7 +17,6 @@ class SearchView(FormView):
     title = _('MyProfile')
     form_class = SearchForm
 
-    @method_decorator(login_required)
     def dispatch(self, request):
         return super(SearchView, self).dispatch(request=request)
 
@@ -32,3 +31,5 @@ class SearchView(FormView):
     def post(self, request):
         data = {'view_title': self.title}
         return render(request, self.template_name, data)
+
+searchView = SearchView.as_view()

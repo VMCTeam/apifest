@@ -69,6 +69,9 @@ class Tag(models.Model):
     eng_name = models.CharField(_('Name'), max_length=50, null=False,
                                                blank=False)
 
+    def __unicode__(self):
+        return self.display_name
+
 
 class Enterprise(models.Model):
     comuna = models.ForeignKey(Comuna, related_name="enterprises")
@@ -88,3 +91,6 @@ class Enterprise(models.Model):
     available = models.BooleanField(_('Available'), default=True)
     phone = models.CharField(_('Phone'), max_length=20, blank=True, null=True)
     tags = models.ManyToManyField(Tag, related_name="enterprise")
+
+    def __unicode__(self):
+        return self.name

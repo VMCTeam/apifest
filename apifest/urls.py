@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from main.views import SearchView
 
 urlpatterns = [
+    url(r'^$', SearchView.as_view(), name='home'),
     url(r'^admin/', include(admin.site.urls)),
 ]

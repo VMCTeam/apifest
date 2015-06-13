@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `provincias`
 --
 
-CREATE TABLE IF NOT EXISTS `addresses_provincia` (
+CREATE TABLE IF NOT EXISTS `main_provincia` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria',
   `name` varchar(200) NOT NULL COMMENT 'Nombre de provincia',
   `region_id` int(11) NOT NULL COMMENT 'Id de region',
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `addresses_provincia` (
 -- Volcado de datos para la tabla `provincias`
 --
 
-INSERT INTO `addresses_provincia` (`id`, `name`, `region_id`, `created`, `updated`) VALUES
+INSERT INTO `main_provincia` (`id`, `name`, `region_id`, `created`, `updated`) VALUES
 (1, 'ARICA', 15, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (2, 'PARINACOTA', 15, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (3, 'IQUIQUE', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -102,8 +102,8 @@ INSERT INTO `addresses_provincia` (`id`, `name`, `region_id`, `created`, `update
 --
 -- Filtros para la tabla `provincias`
 --
-ALTER TABLE `addresses_provincia`
-  ADD CONSTRAINT `region_id` FOREIGN KEY (`region_id`) REFERENCES `addresses_region` (`id`);
+ALTER TABLE `main_provincia`
+  ADD CONSTRAINT `region_id` FOREIGN KEY (`region_id`) REFERENCES `main_region` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
