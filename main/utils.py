@@ -11,6 +11,7 @@ def downloadInfo():
         u'AVENT?auth_key=&(api_key)s&output=json_array' % \
         {'api_key': settings.API_KEY}
 
+	entradas = list()
     response = requests.get(url)
     data = json.loads(response)
     table = data['result']
@@ -23,7 +24,7 @@ def downloadInfo():
                 comuna = comuna.first()
             e.comuna = comuna
         except:
-            pass
+            e.comuna = None
         e.origin = row[3]
         e.destiny = row[4]
         e.name = row[5]
@@ -32,22 +33,35 @@ def downloadInfo():
         e.address_extras = row[8]
         e.phone = row[9]
         e.web = row[10]
+		# sports: >> leer de la base de datos los tags
+
 
         found_tags = False
         #TODO: Acá debe parsear la info y buscar los tags
+		e.save()
+		
+        #if found_tags:
+        #    e.save()
 
-        if found_tags:
-            e.save()
-
-# [Utils: Crawler]
-# @Return: List of Str or None
-def metaData(url):
+def getKeyFromMetaData(url):
+    """
+        @brief Auxiliar function. Returns a list of normalized keywords.
+        @param url String.
+        @return listof(uStrings)
+        
+        Uses normalize(value) to fix unicode strings.
+        The function selects values in the content property
+        of the tags tagged as metadata.
+        This content contain the website keywords for classification.
+    """
     # Variables:
     crawler     = RoboBrowser(history=True)
     endpoint    = "http://"+url
     endpointSSL = "https://"+url
     connFlag    = True
     metadata    = list()
+    temp_list2  = list()
+    keywords    = list()
 
     # Procedimientos:
     try:
@@ -61,21 +75,34 @@ def metaData(url):
         except:
             return None
 
-    metadata.append(crawler.select("meta"))
-    return metadata
+    metadata = crawler.select("meta")
+    # select metadata with keywords:
+    for d in metadata:
+        if 'name' in d.attrs.keys():
+            if d.attrs['name'] == 'keywords':
+                temp_list = re.split(', |,', d.attrs['content'])
+                temp_list2.extend(temp_list)
+
+    for k in temp_list2:
+        keywords.append(normalize(k))                
+
+    return keywords
 
 
 def sportList(url, sportDataList):
 	"""
 		Return list of sports in the metadata of url.
 		This function uses metaData previously defined.
+		@param sportDataList: lista provista por initialLoad().
+		@param url: direccion del sitio a comprobar.
+		@return act_list: lista de actividades que realiza la empresa.
 	"""
     # Variables:
     metadata  = metaData(url)
     act_list  = list()
 
     # Procedimientos:
-    for sport in sportDataList:
+    for sport in sportDataList: # normalizar sport
         for data in metadata:
             if sport in str(data):
 				if sport not in act_list:
